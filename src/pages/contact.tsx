@@ -3,7 +3,8 @@ import {
   Heading, 
   Text, 
   Link, 
-  VStack 
+  Flex, 
+  HStack
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { AiOutlineWhatsApp } from 'react-icons/ai';
@@ -33,39 +34,40 @@ const ContactPage = () => {
         shadow="md"
         whileHover={{ scale: 1.01 }}
       >
-        <VStack spacing={4} align="start">
-          {/* LinkedIn */}
-          <Text fontSize="lg" fontWeight="bold">
-            <FaLinkedin style={{ display: 'inline-block', marginRight: '8px' }} />
-            LinkedIn:
-            <Link 
+
+        <Flex direction="column" align="start" gap={4}>
+          <HStack>
+            <FaLinkedin />
+            <Text fontSize="lg" fontWeight="bold">LinkedIn:</Text>
+            <Link
               href="https://www.linkedin.com/in/francisco-henrique-oliveira-gon%C3%A7alves-024aa5189/"
-              ml={2}
               color="blue.600"
               isExternal
+              fontSize="lg"
             >
               /in/francisco-henrique-oliveira-gonçalves
             </Link>
-          </Text>
+          </HStack>
 
-          {/* WhatsApp */}
-          <Text fontSize="lg" fontWeight="bold">
-            <AiOutlineWhatsApp style={{ display: 'inline-block', marginRight: '8px' }} />
-            WhatsApp:
-            <Text as="span" ml={2}>
-              24 99311-4824
-            </Text>
-          </Text>
-
-          {/* Email */}
-          <Text fontSize="lg" fontWeight="bold">
-            <FaEnvelope style={{ display: 'inline-block', marginRight: '8px' }} />
-            Email:
-            <Text as="span" ml={2}>
+          <HStack>
+            <FaEnvelope />
+            <Text fontSize="lg" fontWeight="bold">Email:</Text>
+            <Text 
+              fontSize="lg" 
+              wordBreak="break-word" 
+              overflowWrap="anywhere"
+            >
               henry.francisco31@hotmail.com
             </Text>
-          </Text>
-        </VStack>
+          </HStack>
+
+            <HStack>
+            <AiOutlineWhatsApp />
+            <Text fontSize="lg" fontWeight="bold">WhatsApp:</Text>
+            <Text fontSize="lg">24 99311-4824</Text>
+          </HStack>
+
+        </Flex>
       </MotionBox>
     </MotionBox>
   );
