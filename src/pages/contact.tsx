@@ -32,7 +32,7 @@ const ContactPage = () => {
         p={6}
         borderRadius="md"
         shadow="md"
-        whileHover={{ scale: 1.01 }}
+        whileHover={{ scale: 1.05 }}
       >
 
         <Flex direction="column" align="start" gap={4}>

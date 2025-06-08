@@ -1,8 +1,14 @@
 import { ReactNode } from 'react';
-import { Box, Flex, Link as ChakraLink } from '@chakra-ui/react';
+import { Box, Flex, Link as ChakraLink, IconButton, useColorMode } from '@chakra-ui/react';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import NextLink from 'next/link';
 
+const MotionFlex = motion(Flex);
+
 const Navbar = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const links = [
     { label: "Home", href: "/" },
     { label: "Sobre", href: "/about" },
@@ -11,18 +17,33 @@ const Navbar = () => {
   ];
 
   return (
-    <Flex as="nav" bg="teal.500" color="white" py={4} justify="center" shadow="md">
+    <MotionFlex
+      as="nav"
+      bgGradient="linear(to-r, teal.500, blue.500)"
+      color="white"
+      py={4}
+      justify="center"
+      align="center"
+      shadow="md"
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+    >
       {links.map((link) => (
         <NextLink key={link.href} href={link.href} passHref legacyBehavior>
-          <ChakraLink 
-            mx={4} 
-            _hover={{ transform: "scale(1.1) translateY(-3px)" }} // animação simples via estilo
-          >
+          <ChakraLink mx={4} _hover={{ transform: "scale(1.1) translateY(-3px)" }}>
             {link.label}
           </ChakraLink>
         </NextLink>
       ))}
-    </Flex>
+      <IconButton
+        aria-label="Alternar tema"
+        icon={colorMode === "light" ? <FaMoon /> : <FaSun />}
+        variant="ghost"
+        color="currentColor"
+        onClick={toggleColorMode}
+        ml={2}
+      />
+    </MotionFlex>
   );
 };
 

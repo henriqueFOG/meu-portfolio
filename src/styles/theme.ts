@@ -1,5 +1,16 @@
-import { extendTheme } from "@chakra-ui/react"
+import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
 
-const theme = extendTheme({});
+const config: ThemeConfig = {
+  initialColorMode: "light",
+  useSystemColorMode: false,
+};
+
+const theme = extendTheme({
+  config,
+  fonts: {
+    heading: `'Poppins', sans-serif`,
+    body: `'Poppins', sans-serif`,
+  },
+});
 
 export default theme;
