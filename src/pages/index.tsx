@@ -25,6 +25,10 @@ const textVariants = {
 
 export default function HomePage() {
   const bgColor = useColorModeValue('gray.100', 'gray.700');
+  const gradient = useColorModeValue(
+    'linear(to-r, teal.400, blue.400)',
+    'linear(to-r, teal.600, blue.600)'
+  );
 
   return (
     <MotionBox
@@ -35,7 +39,10 @@ export default function HomePage() {
       variants={{
         visible: { transition: { staggerChildren: 0.3 } },
       }}
-      p={4}
+      p={8}
+      bgGradient={gradient}
+      color="white"
+      borderRadius="lg"
     >
       <MotionBox custom={0} variants={textVariants} mb={6}>
         <Box mb={4}>
@@ -76,6 +83,7 @@ export default function HomePage() {
         custom={2}
         variants={textVariants}
         bg={bgColor}
+        color={useColorModeValue('gray.800', 'gray.100')}
         p={4}
         borderRadius="md"
         display="inline-block"

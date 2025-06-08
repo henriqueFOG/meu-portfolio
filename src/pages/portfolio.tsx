@@ -58,7 +58,7 @@ const PortfolioPage = () => {
             overflow="hidden"
             shadow="md"
             variants={cardVariants}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: "xl" }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             {project.image && (
